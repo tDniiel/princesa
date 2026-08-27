@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Oi minha princesaaaaa ❤️</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      min-height: 100vh;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Segoe UI", Arial, sans-serif;
+      background: linear-gradient(135deg, #ff758c, #ff7eb3, #c471ed);
+      position: relative;
+    }
+
+    /* Fundo com corações */
+    .hearts {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .heart {
+      position: absolute;
+      bottom: -50px;
+      font-size: 24px;
+      animation: float 7s linear infinite;
+      opacity: 0;
+    }
+
+    .heart:nth-child(1)  { left: 5%;  animation-delay: 0s;   font-size: 22px; }
+    .heart:nth-child(2)  { left: 15%; animation-delay: 2s;   font-size: 32px; }
+    .heart:nth-child(3)  { left: 25%; animation-delay: 4s;   font-size: 18px; }
+    .heart:nth-child(4)  { left: 35%; animation-delay: 1s;   font-size: 28px; }
+    .heart:nth-child(5)  { left: 45%; animation-delay: 5s;   font-size: 20px; }
+    .heart:nth-child(6)  { left: 55%; animation-delay: 3s;   font-size: 34px; }
+    .heart:nth-child(7)  { left: 65%; animation-delay: 1.5s; font-size: 21px; }
+    .heart:nth-child(8)  { left: 75%; animation-delay: 4.5s; font-size: 30px; }
+    .heart:nth-child(9)  { left: 85%; animation-delay: 2.5s; font-size: 19px; }
+    .heart:nth-child(10) { left: 95%; animation-delay: 5.5s; font-size: 27px; }
+
+    @keyframes float {
+      0% {
+        transform: translateY(0) rotate(0deg) scale(0.8);
+        opacity: 0;
+      }
+      15% { opacity: 0.8; }
+      50% {
+        transform: translateY(-50vh) rotate(180deg) scale(1);
+      }
+      100% {
+        transform: translateY(-110vh) rotate(360deg) scale(1.2);
+        opacity: 0;
+      }
+    }
+
+    /* Cartão */
+    .card {
+      width: min(90%, 620px);
+      min-height: 430px;
+      padding: 55px 35px;
+      text-align: center;
+      border-radius: 35px;
+      background: rgba(255, 255, 255, 0.93);
+      box-shadow: 0 25px 70px rgba(100, 20, 80, 0.3);
+      position: relative;
+      z-index: 2;
+      animation: appear 1s ease;
+      backdrop-filter: blur(8px);
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: scale(0.7) translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+      }
+    }
+
+    .main-heart {
+      font-size: 75px;
+      display: inline-block;
+      animation: heartbeat 1.3s infinite;
+      filter: drop-shadow(0 8px 12px rgba(255, 50, 100, 0.25));
+      margin-bottom: 15px;
+    }
+
+    @keyframes heartbeat {
+      0%, 100% { transform: scale(1); }
+      15% { transform: scale(1.18); }
+      30% { transform: scale(1); }
+      45% { transform: scale(1.12); }
+    }
+
+    h1 {
+      color: #e83e70;
+      font-size: clamp(30px, 6vw, 48px);
+      margin-bottom: 18px;
+    }
+
+    p {
+      color: #555;
+      font-size: 19px;
+      line-height: 1.6;
+      margin-bottom: 35px;
+    }
+
+    .question {
+      color: #d82f67;
+      font-weight: 700;
+      font-size: 25px;
+      margin-bottom: 30px;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      position: relative;
+      min-height: 65px;
+    }
+
+    button {
+      border: none;
+      border-radius: 50px;
+      padding: 16px 35px;
+      font-size: 18px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform 0.25s, box-shadow 0.25s;
+      font-family: inherit;
+    }
+
+    #yes {
+      color: white;
+      background: linear-gradient(135deg, #ff3d6e, #ff6b9a);
+      box-shadow: 0 8px 20px rgba(255, 61, 110, 0.35);
+    }
+
+    #yes:hover {
+      transform: scale(1.08);
+      box-shadow: 0 12px 28px rgba(255, 61, 110, 0.5);
+    }
+
+    #no {
+      color: #d93669;
+      background: #ffe5ed;
+      position: relative;
+      transition: left 0.25s ease, top 0.25s ease, transform 0.25s;
+      z-index: 20;
+    }
+
+    #no:hover {
+      transform: scale(0.95);
+    }
+
+    /* Ecrã final */
+    .success {
+      display: none;
+      animation: successAppear 0.8s ease;
+    }
+
+    @keyframes successAppear {
+      from {
+        opacity: 0;
+        transform: scale(0.6);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+
+    .success h2 {
+      color: #e8326c;
+      font-size: clamp(32px, 7vw, 52px);
+      margin-bottom: 18px;
+    }
+
+    .success p {
+      font-size: 21px;
+      margin-bottom: 0;
+    }
+
+    .big-heart {
+      font-size: 100px;
+      animation: heartbeat 1s infinite;
+      display: inline-block;
+      margin-bottom: 15px;
+    }
+
+    /* Confettis */
+    .confetti {
+      position: fixed;
+      top: -20px;
+      z-index: 10;
+      pointer-events: none;
+      animation: fall linear forwards;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh) rotate(720deg);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .card {
+        padding: 40px 22px;
+      }
+
+      .buttons {
+        gap: 10px;
+      }
+
+      button {
+        padding: 14px 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="hearts">
+    <span class="heart">❤️</span>
+    <span class="heart">💕</span>
+    <span class="heart">💗</span>
+    <span class="heart">💖</span>
+    <span class="heart">💓</span>
+    <span class="heart">💘</span>
+    <span class="heart">❤️</span>
+    <span class="heart">💞</span>
+    <span class="heart">💝</span>
+    <span class="heart">💕</span>
+  </div>
+
+  <main class="card">
+
+    <section id="questionScreen">
+      <div class="main-heart">❤️</div>
+
+      <h1>Oiiiii minha princesaaa ❤️</h1>
+
+      <p>
+        Se eu fizer uma tapioca beeeeem totosa, será que tu aceita
+        ficar do meu lado para o resto da vida?
+      </p>
+
+      <div class="question">
+        Aceita ser minha princesa (vulgo Namorada)? 💍💕
+      </div>
+
+      <div class="buttons">
+        <button id="yes">SIM! ❤️</button>
+        <button id="no">Não :( </button>
+      </div>
+    </section>
+
+    <section class="success" id="successScreen">
+      <div class="big-heart">💖</div>
+      <h2>EU SABIA! 🥰</h2>
+      <p>
+        Agora terá tapioca todo dia ❤️<br>
+        E também terá chocolatinho brancooo, chocolatinho de caramelooo, salgadinho de camaraooo e muita pik... AMORR, muito amor.
+        <br><br>
+        Eu te amo, tanto tanto! 💕
+      </p>
+    </section>
+
+  </main>
+
+  <script>
+    const noButton = document.getElementById("no");
+    const yesButton = document.getElementById("yes");
+    const questionScreen = document.getElementById("questionScreen");
+    const successScreen = document.getElementById("successScreen");
+
+    // As mensagens repetem-se infinitamente.
+    const noMessages = [
+      "Tem certeza? 🥺",
+      "Pense melhor ❤️",
+      "Clica aqui não mo😭",
+      "Opaaa 😂",
+      "Eu te amo tantoo 🥹💕",
+      "Aceitaaa 😏",
+      "Aqui naum pode 😈",
+      "Tenta denovo ❤️"
+    ];
+
+    let attempts = 0;
+
+    function moveNoButton() {
+      attempts++;
+
+      // A partir da primeira tentativa, o botão passa a ficar livre
+      // para poder fugir para qualquer zona do ecrã.
+      // O botão continua sempre visível; apenas muda de posição.
+      noButton.style.position = "fixed";
+      noButton.style.display = "block";
+      noButton.style.visibility = "visible";
+      noButton.style.opacity = "1";
+
+      // Mantém o botão SEMPRE totalmente dentro da janela.
+      // O padding cria uma pequena margem para nunca ficar colado às bordas.
+      const padding = 20;
+
+      // Mede o botão depois de ele estar visível.
+      const buttonWidth = noButton.getBoundingClientRect().width;
+      const buttonHeight = noButton.getBoundingClientRect().height;
+
+      // Nunca permite que a posição ultrapasse os limites do viewport.
+      const maxX = Math.max(padding, window.innerWidth - buttonWidth - padding);
+      const maxY = Math.max(padding, window.innerHeight - buttonHeight - padding);
+
+      let x = padding + Math.random() * Math.max(0, maxX - padding);
+      let y = padding + Math.random() * Math.max(0, maxY - padding);
+
+      // Segurança extra: prende sempre o botão dentro do ecrã.
+      x = Math.min(Math.max(x, padding), maxX);
+      y = Math.min(Math.max(y, padding), maxY);
+
+      noButton.style.left = `${Math.round(x)}px`;
+      noButton.style.top = `${Math.round(y)}px`;
+
+      // Quando chega ao fim, volta à primeira mensagem e continua infinitamente.
+      noButton.textContent =
+        noMessages[(attempts - 1) % noMessages.length];
+    }
+
+    // Segurança adicional: verifica periodicamente a posição do botão.
+    // Se por qualquer motivo sair do viewport, coloca-o novamente dentro.
+    setInterval(() => {
+      if (noButton.style.display !== "none" && noButton.style.position === "fixed") {
+        const rect = noButton.getBoundingClientRect();
+        const padding = 20;
+
+        let x = parseFloat(noButton.style.left) || padding;
+        let y = parseFloat(noButton.style.top) || padding;
+
+        const maxX = Math.max(padding, window.innerWidth - rect.width - padding);
+        const maxY = Math.max(padding, window.innerHeight - rect.height - padding);
+
+        x = Math.min(Math.max(x, padding), maxX);
+        y = Math.min(Math.max(y, padding), maxY);
+
+        noButton.style.left = `${x}px`;
+        noButton.style.top = `${y}px`;
+      }
+    }, 250);
+
+    // Se o ecrã mudar de tamanho, garante que o botão continua dentro dele.
+    window.addEventListener("resize", () => {
+      if (noButton.style.position === "fixed") {
+        const padding = 20;
+        const maxX = Math.max(padding, window.innerWidth - noButton.offsetWidth - padding);
+        const maxY = Math.max(padding, window.innerHeight - noButton.offsetHeight - padding);
+
+        const currentX = parseFloat(noButton.style.left) || padding;
+        const currentY = parseFloat(noButton.style.top) || padding;
+
+        noButton.style.left = `${Math.min(Math.max(currentX, padding), maxX)}px`;
+        noButton.style.top = `${Math.min(Math.max(currentY, padding), maxY)}px`;
+      }
+    });
+
+    // Funciona tanto ao passar o rato como ao tocar no botão.
+    noButton.addEventListener("mouseenter", moveNoButton);
+    noButton.addEventListener("touchstart", (event) => {
+      event.preventDefault();
+      moveNoButton();
+    });
+
+    yesButton.addEventListener("click", () => {
+      questionScreen.style.display = "none";
+      successScreen.style.display = "block";
+      noButton.style.display = "none";
+
+      createConfetti();
+    });
+
+    function createConfetti() {
+      const symbols = ["❤️", "💕", "💖", "💗", "💘", "✨", "💝"];
+
+      for (let i = 0; i < 80; i++) {
+        const confetti = document.createElement("div");
+        confetti.className = "confetti";
+        confetti.textContent =
+          symbols[Math.floor(Math.random() * symbols.length)];
+
+        confetti.style.left = Math.random() * 100 + "vw";
+        confetti.style.fontSize = (15 + Math.random() * 25) + "px";
+        confetti.style.animationDuration = (2 + Math.random() * 3) + "s";
+        confetti.style.animationDelay = Math.random() * 0.8 + "s";
+
+        document.body.appendChild(confetti);
+
+        setTimeout(() => confetti.remove(), 6000);
+      }
+    }
+  </script>
+
+</body>
+</html>
